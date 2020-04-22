@@ -5,7 +5,8 @@ const {
     getAllAdmins,
     addAdmin,
     editAdmin,
-    login
+    login,
+    changePassword
 } = require("../controllers/adminController");
 
 router.get('/', getAllAdmins);
@@ -17,5 +18,7 @@ router.post('/add', addAdmin);
 router.put('/edit/:id', editAdmin);
 
 router.post("/login", login)
+
+router.put("/change_password/:id", changePassword)
 
 module.exports = router;

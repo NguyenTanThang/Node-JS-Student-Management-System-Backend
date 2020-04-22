@@ -8,7 +8,8 @@ const {
     editStudent,
     deleteStudent,
     login,
-    getStudentByClassName
+    getStudentByClassName,
+    changePassword
 } = require("../controllers/studentController");
 
 router.get('/', getStudentsByName, getAllStudents);
@@ -24,5 +25,7 @@ router.delete('/delete/:id', deleteStudent);
 router.post("/login", login)
 
 router.get("/class_name/:class_name", getStudentByClassName)
+
+router.put("/change_password/:id", changePassword)
 
 module.exports = router;

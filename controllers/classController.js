@@ -25,7 +25,7 @@ const getClassByClassName = async (req, res, next) => {
         const {class_name} = req.query;
 
         if (class_name == undefined){
-            next();
+            return next();
         }
 
         const classes = await Class.findOne({class_name});
@@ -96,6 +96,7 @@ const editClass = async (req, res) => {
         const {id} = req.params;
 
         const existedClass = await Class.findById(id);
+
         if (!existedClass){
             return res.status(400).json({
                 success: false,
@@ -116,6 +117,7 @@ const editClass = async (req, res) => {
         })
 
         let students = await Student.find();
+
         students = students.map(student => {
             if (student.assigned_classroom == updatedClass.class_name) {
                 student.assigned_classroom = updatedClass.class_name
